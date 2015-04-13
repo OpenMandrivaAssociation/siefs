@@ -14,7 +14,6 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	pkgconfig(fuse) >= 2.2
 BuildRequires:	pkgconfig
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
 
