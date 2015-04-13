@@ -1,0 +1,66 @@
+--- siefs-0.4/configure.in.orig	2005-04-05 18:56:13.000000000 +0200
++++ siefs-0.4/configure.in	2005-04-05 18:58:35.000000000 +0200
+@@ -10,44 +10,10 @@
+ fi
+ AC_SUBST(LD)
+ 
+-CFLAGS="-Wall -W -g -O2"
+-
+ AC_ARG_WITH(fuse,
+ 	[  --with-fuse=DIR	specify location of fuse],
+ 	[fuseinst="$withval"])
+ 
+-CPPFLAGS="$CPPFLAGS -I${fuseinst}/include"
+-LDFLAGS="$LDFLAGS -L${fuseinst}/lib"
+-
+-AC_MSG_CHECKING([fuse installation])
+-if test -z "$fuseinst" ; then
+-	for d in /usr /usr/local /opt ; do
+-		if test -f $d/include/fuse/fuse.h ; then
+-			fuseinst=$d
+-			break
+-		fi
+-	done
+-fi
+-
+-if ! test -f $fuseinst/include/fuse/fuse.h ; then
+-	AC_MSG_RESULT([Not found])
+-	AC_MSG_ERROR([
+-*** Please specify the location of the fuse with
+-*** the '--with-fuse=DIR' option.
+-*** You can download latest version of fuse
+-*** at http://sourceforge.net/projects/fuse
+-])
+-fi
+-
+-if ! grep -q '\(\*release\)' $fuseinst/include/fuse/fuse.h ; then
+-	AC_MSG_RESULT([old])
+-	AC_MSG_ERROR([
+-*** You need fuse version 2.0 or later.
+-*** Please go to http://sourceforge.net/projects/fuse
+-*** and download the latest version
+-])
+-fi
+-AC_MSG_RESULT(${fuseinst})
+ AC_SUBST(fuseinst)
+ 
+ subdirs="siefs converter"
+--- siefs-0.4/siefs/Makefile.am.orig	2005-04-05 18:57:01.000000000 +0200
++++ siefs-0.4/siefs/Makefile.am	2005-04-05 18:57:27.000000000 +0200
+@@ -1,7 +1,5 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-CFLAGS = -I$(fuseinst)/include -DFUSEINST="\"$(fuseinst)\"" -D_FILE_OFFSET_BITS=64 -DFUSE_USE_VERSION=22
+-
+ bin_PROGRAMS = siefs slink
+ 
+ siefs_SOURCES = siefs.c obex.c obex.h bfb.c bfb.h comm.c comm.h \
+@@ -9,7 +7,7 @@
+ slink_SOURCES = slink.c obex.c obex.h transport.c transport.h comm.c comm.h \
+ 	crcmodel.c crcmodel.h
+ 
+-LDADD = $(fuseinst)/lib/libfuse.a -lpthread
++LDADD = -lpthread
+ 
+ install-exec-hook:
+ 	-rm -f /sbin/mount.siefs
