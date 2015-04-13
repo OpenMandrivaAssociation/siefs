@@ -45,8 +45,8 @@
  AC_SUBST(fuseinst)
  
  subdirs="siefs converter"
---- siefs-0.4/siefs/Makefile.am.orig	2005-04-05 18:57:01.000000000 +0200
-+++ siefs-0.4/siefs/Makefile.am	2005-04-05 18:57:27.000000000 +0200
+--- siefs-0.5/siefs/Makefile.am.orig	2005-04-05 15:36:28.000000000 +0100
++++ siefs-0.5/siefs/Makefile.am	2015-04-13 20:49:19.841228157 +0100
 @@ -1,7 +1,5 @@
  ## Process this file with automake to produce Makefile.in
  
@@ -54,7 +54,7 @@
 -
  bin_PROGRAMS = siefs slink
  
- siefs_SOURCES = siefs.c obex.c obex.h bfb.c bfb.h comm.c comm.h \
+ siefs_SOURCES = siefs.c obex.c obex.h transport.c transport.h comm.c comm.h \
 @@ -9,7 +7,7 @@
  slink_SOURCES = slink.c obex.c obex.h transport.c transport.h comm.c comm.h \
  	crcmodel.c crcmodel.h
