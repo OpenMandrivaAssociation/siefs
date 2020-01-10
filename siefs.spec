@@ -29,7 +29,7 @@ C55/M50/MT50/SL55/C60.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 autoreconf -fiv
