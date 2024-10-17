@@ -8,7 +8,7 @@ License:	GPL, partially free (see COPYRIGHT.vmo2wav)
 Group:		System/Base
 Source0:	http://chaos.allsiemens.com/download/%{name}-%{version}.tar.gz
 Patch0:		siefs-0.5-qa-fixes.patch
-URL:		http://chaos.allsiemens.com/siefs/
+URL:		https://chaos.allsiemens.com/siefs/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	pkgconfig(fuse) >= 2.2
