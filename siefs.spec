@@ -9,6 +9,8 @@ Group:		System/Base
 Source0:	http://chaos.allsiemens.com/download/%{name}-%{version}.tar.gz
 Patch0:		siefs-0.5-qa-fixes.patch
 URL:		https://chaos.allsiemens.com/siefs/
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	pkgconfig(fuse) >= 2.2
